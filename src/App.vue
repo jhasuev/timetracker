@@ -1,17 +1,12 @@
 <template>
-  <div class="page-container">
-    <div class="md-elevation-10">
-      <md-app>
-
-        <md-app-drawer md-permanent="full">
-          <Sidebar />
-        </md-app-drawer>
-
-        <md-app-content>
-          <MainContent />
-        </md-app-content>
-
-      </md-app>
+  <div class="main-view-wrapper">
+    <div class="main-view">
+      <md-content class="main-view__sidebar  md-scrollbar">
+        <Sidebar />
+      </md-content>
+      <div class="main-view__content">
+        <MainContent />
+      </div>
     </div>
   </div>
 </template>
@@ -31,18 +26,36 @@ export default {
 
 </script>
 
-<style scoped>
-.page-container {
-  max-width: 999px;
-  padding: 50px 15px;
-  margin: auto;
+<style lang="scss" scoped>
+
+.main-view-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  height: 100vh;
 }
-.md-app {
+
+.main-view {
+  display: flex;
+
+  width: 999px;
+  min-width: 999px;
   height: 630px;
-  border: 1px solid rgba(#000, .12);
+
+  margin: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+
+  background-color: #fff;
+
+  &__sidebar {
+    min-width: 290px;
+    max-width: 290px;
+  }
+  &__content {
+    flex-grow: 1;
+    padding: 15px;
+  }
 }
-.md-drawer {
-  width: 290px;
-  max-width: calc(100vw - 125px);
-}
+  
+
 </style>

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import '@/scss/main.scss'
 
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
