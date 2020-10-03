@@ -6,3 +6,40 @@
   padding-left: 10px !important;
   padding-right: 10px !important;
 }
+
+.text-center {
+  text-align: center;
+}
+
+.color-red {
+  color: #f00;
+}
+.color-green {
+  color: #090;
+}
+.color-blue {
+  color: #5af;
+}
+.color-gray {
+  color: #999;
+}
+
+.table {
+  width: 100%;
+  $border-width: 1px;
+  border-spacing: 0;
+
+  td {
+    padding: 5px 10px;
+    border: 0px solid rgba(0,0,0,.2);
+
+    border-top-width: $border-width;
+    border-right-width: $border-width;
+    &:first-child {
+      border-left-width: $border-width;
+    }
+  }
+  tr:last-child td {
+    border-bottom-width: $border-width;
+  }
+}

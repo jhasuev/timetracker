@@ -2,38 +2,54 @@
   <div class="content">
     <div class="content__head">
       <h2 class="content__head-title  display-1">Название проекта</h2>
+      <div class="content__head-desc  md-caption">{{'Описание проекта'.repeat(20)}}</div>
     </div>
     <md-content class="content__middle md-scrollbar">
-      <md-table class="content__middle-table">
-        <md-table-row>
-          <md-table-head class="play-btn"></md-table-head>
-          <md-table-head>Task title</md-table-head>
-          <md-table-head>Time total</md-table-head>
-        </md-table-row>
-
-        <md-table-row
-          v-for="n in 100"
-          :key="n"
-        >
-          <md-table-cell class="play-btn  clear-paddings">
-            <md-button class="btn md-icon-button md-dense md-raised md-primary">
-              <md-icon>arrow_right</md-icon>
-            </md-button>
-          </md-table-cell>
-          <md-table-cell>Shawna Dubbin</md-table-cell>
-          <md-table-cell>00:02:27</md-table-cell>
-        </md-table-row>
-      </md-table>
+      <tasks class="content__middle-tasks" />
     </md-content>
     <div class="content__info">
-      Информация по проекту
+      <table class="content__info-table  table">
+        <tr>
+          <td>Проект в работе</td>
+          <td>00:02:27</td>
+        </tr>
+        <tr>
+          <td>На сумму</td>
+          <td>666 ₽</td>
+        </tr>
+        <tr>
+          <td>Оплачено (всего/оплачено/осталось)</td>
+          <td>
+            <span class="color-gray">333 ₽</span> /
+            <span class="color-green">+333 ₽</span> /
+            <span class="color-red">333 ₽</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Действия</td>
+          <td>
+            <md-button class="md-icon-button md-dense md-raised">
+              <md-icon>attach_money</md-icon>
+              <md-tooltip md-direction="top">Add payment</md-tooltip>
+            </md-button>
+            <md-button class="md-icon-button md-dense md-raised md-accent">
+              <md-icon>clear</md-icon>
+              <md-tooltip md-direction="top">Remove the task</md-tooltip>
+            </md-button>
+          </td>
+        </tr>
+      </table>
     </div>
   </div>
 </template>
 
 <script>
+import Tasks from './tasks.vue'
 export default {
   name: 'MainContent',
+  components: {
+    Tasks,
+  },
 }
 </script>
 
@@ -46,18 +62,32 @@ export default {
   height: 100%;
 
   &__head {
+    padding-bottom: 10px;
     border-bottom: 1px solid #ddd;
-    &-title {}
+    &-title {
+      margin: 0;
+    }
+    &-desc {
+      margin-top: 10px;
+    }
   }
   
   &__middle {
     flex-grow: 1;
-    &-table {}
+
+    &-tasks {
+      height: 100%;
+    }
   }
 
   &__info {
-    padding: 10px;
+    padding-top: 15px;
     border-top: 1px solid #ddd;
+
+    &-table {
+      // max-width: 50%;
+      // max-width: 50%;
+    }
   }
 }
 
