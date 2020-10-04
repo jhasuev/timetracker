@@ -13,8 +13,8 @@
 
 <script>
 
-import Sidebar from '@/components/sidebar.vue'
-import MainContent from '@/components/main.vue'
+import Sidebar from '@/components/sidebar/index'
+import MainContent from '@/components/content/index'
 
 export default {
   name: 'App',

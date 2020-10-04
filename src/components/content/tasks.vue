@@ -33,7 +33,7 @@
           <md-tooltip md-direction="top">Start timer</md-tooltip>
         </md-button>
         <md-button class="md-icon-button md-dense md-raised md-accent">
-          <md-icon>clear</md-icon>
+          <md-icon>delete</md-icon>
           <md-tooltip md-direction="top">Remove the task</md-tooltip>
         </md-button>
       </md-table-cell>
