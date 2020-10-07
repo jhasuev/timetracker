@@ -1,13 +1,25 @@
 <template>
   <div class="header">
-    <h2 class="header__title  display-1">Название проекта</h2>
-    <div class="header__desc  md-caption">{{'Описание проекта'.repeat(20)}}</div>
+    <h2
+      v-if="getSelectedProject.title"
+      class="header__title  display-1"
+    >{{ getSelectedProject.title }}</h2>
+    <div
+      v-if="getSelectedProject.description"
+      class="header__desc  md-caption"
+    >{{ getSelectedProject.description }}</div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'Header',
+  computed: {
+    ...mapGetters([
+      'getSelectedProject',
+    ])
+  },
 }
 </script>
 

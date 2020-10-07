@@ -1,37 +1,32 @@
 <template>
-  <div class="sidebar">
+  <div>
     <sidebar-info class="info" />
-    <tasks class="tasks" />
+    <projects class="projects" />
   </div>
 </template>
 
 <script>
 import SidebarInfo from '@/components/sidebar/info.vue'
-import Tasks from '@/components/sidebar/tasks.vue'
+import Projects from '@/components/sidebar/projects.vue'
 export default {
   name: 'Sidebar',
   components: {
     SidebarInfo,
-    Tasks,
+    Projects,
   },
 }
 </script>
 
 <style lang="scss" scoped>
 
-.sidebar {
-  padding: 20px;
-}
-
 .info {
   z-index: 2;
   position: sticky;
   top: 0;
-  margin: 0 -20px;
   border-bottom: 1px solid #eee;
 }
 
-.tasks {
+.projects {
   position: relative;
   z-index: 1;
 }

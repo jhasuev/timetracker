@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import store from './store/'
 import '@/scss/main.scss'
 
 import VueMaterial from 'vue-material'
@@ -11,5 +12,6 @@ Vue.use(VueMaterial)
 Vue.config.productionTip = false
 
 new Vue({
+  store,
   render: h => h(App),
 }).$mount('#app')

@@ -1,29 +1,40 @@
 <template>
   <div class="info">
     <div class="info__actions">
-      <md-button class="md-icon-button md-raised md-primary">
-        <md-icon>play_arrow</md-icon>
-        <md-tooltip md-direction="top">Start timer</md-tooltip>
-      </md-button>
+      <div>
+        <md-button
+          class="md-icon-button md-raised md-primary"
+          :disabled="!getSelectedProject"
+        >
+          <md-icon>play_arrow</md-icon>
+        </md-button>
+        <md-tooltip v-if="getSelectedProject" md-direction="bottom">Start timer</md-tooltip>
+      </div>
+
       <div class="info__actions-time">
         00:02:27
       </div>
-      <md-button class="md-icon-button md-raised">
-        <md-icon>edit</md-icon>
-        <md-tooltip md-direction="top">Edit this project</md-tooltip>
-      </md-button>
+
+      <div>
+        <md-button
+          class="md-icon-button md-raised"
+          @click="project_create_popup = true"
+        >
+          <md-icon>add</md-icon>
+        </md-button>
+        <md-tooltip md-direction="bottom">Edit this project</md-tooltip>
+      </div>
     </div>
     <div class="info__task">
-      <div class="md-headline">Project name</div>
+      <div
+        v-if="getSelectedProject"
+        class="md-headline"
+      >{{ getSelectedProject.title }}</div>
+
       <div class="md-subheading">Task name</div>
     </div>
     <div class="info__total  md-caption">
       Total today: 02:27
-    </div>
-    <div class="text-center">
-      <md-button @click="project_create_popup = true">
-        Create new project
-      </md-button>
     </div>
 
     <project-create-edit-popup v-model="project_create_popup" />
@@ -32,19 +43,20 @@
 
 <script>
 import ProjectCreateEditPopup from '@/components/popups/project-create-edit-popup'
+import { mapGetters } from 'vuex'
 export default {
   name: 'SidebarInfo',
   components: {
     ProjectCreateEditPopup,
   },
+  computed: {
+    ...mapGetters([
+      'getSelectedProject',
+    ]),
+  },
   data(){
     return {
       project_create_popup: false,
-      data: {
-        project_name: '',
-        project_desc: '',
-        payment: '',
-      },
     }
   },
   methods: {

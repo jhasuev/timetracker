@@ -1,5 +1,10 @@
 <template>
-  <md-table v-model="people" md-card @md-selected="onSelect" md-fixed-header>
+  <md-table
+    md-card
+    md-fixed-header
+    :value="getTasks"
+    @md-selected="onSelect"
+  >
     <md-table-toolbar>
 
       <md-field md-clearable class="md-toolbar-section-start">
@@ -27,14 +32,10 @@
     <md-table-row slot="md-table-row" slot-scope="{ item }" md-selectable="multiple">
       <md-table-cell md-label="Name">{{ item.title }}</md-table-cell>
       <md-table-cell md-label="Email">{{ item.time }}</md-table-cell>
-      <md-table-cell md-label="Actions">
+      <md-table-cell md-label="Action">
         <md-button class="md-icon-button md-dense md-raised md-primary">
           <md-icon>play_arrow</md-icon>
           <md-tooltip md-direction="top">Start timer</md-tooltip>
-        </md-button>
-        <md-button class="md-icon-button md-dense md-raised md-accent">
-          <md-icon>delete</md-icon>
-          <md-tooltip md-direction="top">Remove the task</md-tooltip>
         </md-button>
       </md-table-cell>
     </md-table-row>
@@ -42,8 +43,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-  name: 'TableMultiple',
+  name: 'Tasks',
   data(){
     return {
       selected: [],
@@ -75,6 +77,11 @@ export default {
       ],
       search: '',
     }
+  },
+  computed: {
+    ...mapGetters([
+      'getTasks',
+    ]),
   },
   methods: {
     onSelect (items) {
